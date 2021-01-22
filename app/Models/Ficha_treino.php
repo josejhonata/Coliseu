@@ -9,7 +9,7 @@ class Ficha_treino extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'descricao',
-    ];
+    public function equipamentos(){
+        return $this->hasMany(equipamento::class);
+    }
 }
