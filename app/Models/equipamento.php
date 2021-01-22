@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class equipamento extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+    ];
 }
