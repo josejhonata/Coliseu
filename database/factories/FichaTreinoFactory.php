@@ -22,7 +22,7 @@ class FichaTreinoFactory extends Factory
     public function definition()
     {
         return [
-            'descricao' => $this->faker->descricao,
+            'descricao' => $this->faker->word,
         ];
     }
 }
