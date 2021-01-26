@@ -30,14 +30,14 @@
             <div class="mt-4">
                 <x-label for="cep" :value="__('CEP')" />
 
-                <x-input id="cep" class="block mt-1 w-full" placeholder="Ex: 00000000" type="text" name="cep" :value="old('cep')" required />
+                <x-input id="cep" class="block mt-1 w-full" placeholder="Ex: 53152152" type="text" name="cep" :value="old('cep')" required />
             </div>
 
             <!-- Username -->
             <div class="mt-4">
                 <x-label for="username" :value="__('Nome de usuário')" />
 
-                <x-input id="username" class="block mt-1 w-full" placeholder="Ex: 00000000" type="text" name="username" :value="old('username')" required />
+                <x-input id="username" class="block mt-1 w-full" placeholder="Ex: @user" type="text" name="username" :value="old('username')" required />
             </div>
 
 
