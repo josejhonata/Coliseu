@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfessorController extends Controller
 {
@@ -35,7 +36,24 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'cpf' => 'required',
+            'telefone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        Professor::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'cpf' => $request->cpf,
+            'telefone' => $request->telefone,
+            'password' => Hash::make($request->password),
+
+        ]);
+
+        return redirect('dashboard');
     }
 
     /**
