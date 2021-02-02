@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\AlunosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,7 @@ Route::get('/dashboard', function () {
 
 
 Route::post('/cadastro/professor',[ProfessorController::class, 'store'])->name('add-professor');
+
+Route::post('/cadastro/aluno',[AlunosController::class, 'store'])->name('add-aluno');
 
 require __DIR__.'/auth.php';
