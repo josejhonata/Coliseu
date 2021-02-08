@@ -12,6 +12,13 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <!-- Tipo ID -->
+            <div>
+                <x-label for="tipo_id" :value="__('Tipo_id')" />
+
+                <x-input id="tipo_id" class="block mt-1 w-full" type="text" name="tipo_id" :value="old('tipo_id')" required/>
+            </div>
+
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Nome')" />
@@ -25,6 +32,14 @@
 
                 <x-input id="email" class="block mt-1 w-full" placeholder="Ex: liliane@gmail.com" type="email" name="email" :value="old('email')" required />
             </div>
+
+                 <!-- CPF -->
+            <div class="mt-4">
+                <x-label for="cpf" :value="__('CPF')" />
+
+                <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required />
+            </div>
+
 
             <!-- Cep -->
             <div class="mt-4">
