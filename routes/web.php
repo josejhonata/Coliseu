@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunosController;
 /*
@@ -23,8 +24,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::post('/cadastro/professor',[ProfessorController::class, 'store'])->name('add-professor');
-
-Route::post('/cadastro/aluno',[AlunosController::class, 'store'])->name('add-aluno');
+Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
 
 require __DIR__.'/auth.php';

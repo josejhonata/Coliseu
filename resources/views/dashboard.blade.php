@@ -32,14 +32,27 @@
       <div class="p-3">
         <h1>  Cadastrar Professor</h1>
 
-        <form action="{{route('add-professor')}}" method="POST">
+        <form action="{{route('registro')}}" method="POST">
             @csrf
+
+            <div>
+                <x-label for="tipo_id" :value="__('Tipo_Id')" />
+
+                <x-input id="tipo_id" class="block mt-1 w-full" type="text" name="tipo_id" :value="old('tipo_id')" required/>
+            </div>
 
             <div>
                 <x-label for="name" :value="__('Nome')" />
 
-                <x-input id="name" class="block mt-1 w-full" placeholder="Ex: Liliane" type="text" name="name" :value="old('name')" required/>
+                <x-input id="name" class="block mt-1 w-full" placeholder="Ex: Liliane" type="text" name="name" :value="old('name')" required autofocus />
             </div>
+
+            <div>
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required/>
+            </div>
+
 
             <div>
                 <x-label for="cpf" :value="__('Cpf')" />
@@ -47,18 +60,19 @@
                 <x-input id="cpf" class="block mt-1 w-full"  type="text" name="cpf" :value="old('cpf')" required/>
             </div>
 
-            <div>
-                <x-label for="telefone" :value="__('Telefone')" />
+             <div class="mt-4">
+                <x-label for="cep" :value="__('CEP')" />
 
-                <x-input id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required/>
+                <x-input id="cep" class="block mt-1 w-full" placeholder="Ex: 53152152" type="text" name="cep" :value="old('cep')" required />
+            </div>
+
+            <div>
+                <x-label for="username" :value="__('Nome de usuário')" />
+
+                <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required/>
             </div>
 
 
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required/>
-            </div>
 
 
             <div>
@@ -119,14 +133,29 @@
       <div class="p-3">
         <h1>  Cadastrar Aluno</h1>
 
-        <form action="{{route('add-aluno')}}" method="POST">
+        <form action="{{route('registro')}}" method="POST">
             @csrf
+
+
+            <div>
+                <x-label for="tipo_id" :value="__('Tipo_Id')" />
+
+                <x-input id="tipo_id" class="block mt-1 w-full" type="text" name="tipo_id" :value="old('tipo_id')" required/>
+            </div>
 
             <div>
                 <x-label for="name" :value="__('Nome')" />
 
                 <x-input id="name" class="block mt-1 w-full" placeholder="Ex: Liliane" type="text" name="name" :value="old('name')" required/>
             </div>
+
+            <div>
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required/>
+            </div>
+
+
 
             <div>
                 <x-label for="cpf" :value="__('Cpf')" />
@@ -140,17 +169,10 @@
                 <x-input id="cep" class="block mt-1 w-full"  type="text" name="cep" :value="old('cep')" required/>
             </div>
 
-            <div>
-                <x-label for="telefone" :value="__('Telefone')" />
+           <div class="mt-4">
+                <x-label for="username" :value="__('Nome de usuário')" />
 
-                <x-input id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required/>
-            </div>
-
-
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required/>
+                <x-input id="username" class="block mt-1 w-full" placeholder="Ex: @user" type="text" name="username" :value="old('username')" required />
             </div>
 
 
