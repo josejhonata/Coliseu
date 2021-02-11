@@ -1,8 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="/" >
+
+                <img class="h-16 " src="{{ asset('dark.png') }}" />
+
             </a>
         </x-slot>
 
@@ -82,7 +84,7 @@
                     {{ __('Já Registrado?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button class="ml-4" style="background:#d85c23;">
                     {{ __('Registre-se') }}
                 </x-button>
             </div>
