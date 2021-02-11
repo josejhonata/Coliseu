@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
+
         <x-slot name="logo">
             <a href="/" >
 
@@ -50,7 +51,7 @@
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-button class="ml-3" style="background: #d85c23">
                     {{ __('Login') }}
                 </x-button>
             </div>
