@@ -35,7 +35,17 @@ class FichaTreinoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descricao' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        Ficha_treino::create([
+            'descricao' => $request->descricao,
+            'user_id' => $request->user_id,
+        ]);
+
+        return redirect('/professor');
     }
 
     /**
