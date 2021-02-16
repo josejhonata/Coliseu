@@ -33,24 +33,24 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tipo_id' => 'required',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
              'cpf' => 'required',
              'cep' => 'required',
              'username' => 'required',
+             'tipo' => 'required',
             'password' => 'required|string|confirmed|min:8',
             
            
         ]);
 
         Auth::login($user = User::create([
-            'tipo_id' => $request->tipo_id,
             'name' => $request->name,
             'email' => $request->email,
             'cpf' => $request->cpf,
             'cep' => $request->cep,
             'username'=> $request->username,
+            'tipo' => $request->tipo,
             'password' => Hash::make($request->password),
             
             
