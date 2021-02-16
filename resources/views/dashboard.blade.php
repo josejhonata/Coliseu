@@ -44,9 +44,7 @@
     </x-slot>
 
    @php
-$clientes=App\Models\User::where('tipo','cliente')->get();
-$clientess=App\Models\User::where('tipo','atendente')->get();
-$clientesss=App\Models\User::where('tipo','professor')->get();
+$clientes=App\Models\User::all();
 @endphp
 
 <b>
@@ -62,27 +60,7 @@ $clientesss=App\Models\User::where('tipo','professor')->get();
         </tr>   
      </thead>
     <tbody>
-        @foreach ($clientess as $cliente)
-        <tr>
-            <td>{{$cliente->id}}</td>
-            <td>{{$cliente->name}}</td>
-            <td>{{$cliente->username}}</td>
-            <td>{{$cliente->cep}}</td>
-        </tr>
-
-    @endforeach
-
-    @foreach ($clientes as $cliente)
-        <tr>
-            <td>{{$cliente->id}}</td>
-            <td>{{$cliente->name}}</td>
-            <td>{{$cliente->username}}</td>
-            <td>{{$cliente->cep}}</td>
-        </tr>
-
-    @endforeach
-
-    @foreach ($clientesss as $cliente)
+        @foreach ($clientes as $cliente)
         <tr>
             <td>{{$cliente->id}}</td>
             <td>{{$cliente->name}}</td>
