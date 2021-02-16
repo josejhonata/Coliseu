@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\FichaTreinoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/cliente', function () {
+    return view('cliente');
+})->middleware(['auth'])->name('cliente');
+
+Route::get('/professor', function () {
+    return view('professor');
+})->middleware(['auth'])->name('professor');
 
 Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
+Route::post('/professor/ficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
 
 require __DIR__.'/auth.php';
