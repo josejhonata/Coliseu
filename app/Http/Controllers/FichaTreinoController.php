@@ -90,6 +90,7 @@ class FichaTreinoController extends Controller
      */
     public function destroy(Ficha_treino $ficha_treino)
     {
-        //
+        $ficha_treino->delete();
+        return redirect('/professor');
     }
 }

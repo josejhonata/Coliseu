@@ -32,6 +32,8 @@ Route::get('/professor', function () {
     return view('professor');
 })->middleware(['auth'])->name('professor');
 
+Route::get('/professor/delete/{ficha_treino}',[FichaTreinoController::class, 'destroy'])->name('rm-ficha');
+
 Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
 Route::post('/professor/ficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
 

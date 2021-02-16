@@ -20,7 +20,7 @@
 
 @php
 $clientes=App\Models\User::where('tipo','cliente')->get();
-
+$fichas=App\Models\Ficha_treino::all();
 @endphp
 
 <b>
@@ -33,7 +33,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
             <th>Nome do cliente</th>
             <th>Username do cliente</th>
             <th>Cep do cliente</th>
-        </tr>   
+            </tr>   
      </thead>
     <tbody>
         @foreach ($clientes as $cliente)
@@ -42,11 +42,30 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
             <td>{{$cliente->name}}</td>
             <td>{{$cliente->username}}</td>
             <td>{{$cliente->cep}}</td>
-        </tr>
+
     @endforeach
     </tbody>
 </table>
-
+<b>
+<h1>Fichas de treino</h1>
+</b>
+<table>
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Id do cliente</th>
+            <th>Opções</th>
+            </tr>   
+     </thead>
+    <tbody>
+        @foreach ($fichas as $ficha)
+        <tr>
+            <td>{{$ficha->descricao}}</td>
+            <td>{{$ficha->user_id}}</td>
+            <td><a class="bg-red-200 rounded hover:bg-red-300" href="{{ route('rm-ficha', $ficha)}}">Excluir</a></td>
+    @endforeach
+    </tbody>
+</table>
 <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
