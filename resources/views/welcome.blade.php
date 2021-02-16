@@ -17,7 +17,7 @@
                 width: 100%;
             }
             header{
-                background: #d85c23;
+                background: #000000;
             }
             header::after{
                 content: '';
@@ -25,9 +25,9 @@
                 clear: both;
             }
             .logo{
-                float: left;
-                width: 5.7%;
-                height: 19%;
+                float: auto;
+                width: 4.7%;
+                height: 10%;
             }
             nav{
                 float: right;
@@ -42,7 +42,7 @@
 
                 display: inline-block;
                 margin-left: 7px;
-                padding-top: 25px;
+                padding-top: 9px;
                 position: relative;
             }
             nav a{
@@ -62,7 +62,6 @@
                 line-height: 100px;
                 font-size: 45px;
                 color:White;
-                margin-top: 10PX;
                 text-shadow: 2px 2px 5px black;
             }
             .tx1{
@@ -136,10 +135,13 @@
             .button:active {transform: translateY(9px);}
 
             img{
-                width: 80px;
+                position: absolute;
+                right: 90%;
+                justify-items: auto;
+                width: 60px;
             }
             .tx1{
-                padding: 7%;
+                padding: 6%;
             }
         </style>
 
