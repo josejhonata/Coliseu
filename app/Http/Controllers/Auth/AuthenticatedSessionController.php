@@ -32,7 +32,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect(RouteServiceProvider::HOME);
+        if (Auth::user()->tipo =='atendente') {
+        
+        return redirect(RouteServiceProvider::HOME);    
+        
+        }elseif (Auth::user()->tipo =='cliente') {
+            
+            return redirect(RouteServiceProvider::HOME_CL);
+        }else{
+
+            return redirect(RouteServiceProvider::HOME_PR);
+        }
+        
     }
 
     /**
