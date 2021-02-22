@@ -10,8 +10,11 @@ class Ficha_treino extends Model
     use HasFactory;
 
         protected $fillable = [
+        'equipamento',
+        'serie',
+        'repeticao',
         'descricao',
-        'user_id',
+        'user_name',
     ];
 
     public function equipamentos(){
