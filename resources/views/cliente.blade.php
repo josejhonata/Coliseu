@@ -1,3 +1,19 @@
+<style type="text/css">
+table{
+width: 70%;
+padding: 5%;
+text-align: center;
+background: white;
+}
+    tr{
+
+border-bottom: 1px solid #ddd;
+
+}
+th{
+border-right: 1px solid #ddd;
+}
+</style>
 <x-app-layout>
 
 	<x-slot name="header">
@@ -7,7 +23,7 @@
     </x-slot>
 
 @php
-$fichas=App\Models\Ficha_treino::where('user_id',Auth::user()->id)->get();
+$fichas=App\Models\Ficha_treino::where('user_name',Auth::user()->name)->get();
 @endphp
 
 <b><h1>Ficha de Treino</h1></b>
