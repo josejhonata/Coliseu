@@ -22,6 +22,9 @@ class FichaTreinoFactory extends Factory
     public function definition()
     {
         return [
+            'equipamento'=>$this->faker->word,
+            'serie'=>$this->faker->word,
+            'repeticao'=>$this->faker->RandomNumber(),
             'descricao' => $this->faker->word,
         ];
     }
