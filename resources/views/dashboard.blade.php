@@ -59,12 +59,14 @@
     </x-slot>
 
    @php
-$clientes=App\Models\User::all();
+$clientes=App\Models\User::where('tipo','cliente')->get();
+$professors=App\Models\User::where('tipo','professor')->get();
+$equipamentos=App\Models\equipamento::all();
 @endphp
 <center>
 
     <b>
-        <h1>Todos os clientes</h1>
+        <h1>Todos os Clientes e Professores</h1>
     </b>
     <thead>
     <table>
@@ -73,6 +75,7 @@ $clientes=App\Models\User::all();
                 <th>Nome do cliente</th>
                 <th>Username do cliente</th>
                 <th>Cep do cliente</th>
+                <th>Tipo do Usuário</th>
             </tr>
         </thead>
         <tbody>
@@ -82,6 +85,41 @@ $clientes=App\Models\User::all();
                 <td>{{$cliente->name}}</td>
                 <td>{{$cliente->username}}</td>
                 <td>{{$cliente->cep}}</td>
+                <td>{{$cliente->tipo}}</td>
+            </tr>
+
+            @endforeach
+
+            @foreach ($professors as $professor)
+            <tr>
+                <td style="">{{$professor->id}}</td>
+                <td>{{$professor->name}}</td>
+                <td>{{$professor->username}}</td>
+                <td>{{$professor->cep}}</td>
+                <td>{{$professor->tipo}}</td>
+            </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
+</center>
+<center>
+    <b>
+        <h1>Todos os Equipamentos</h1>
+    </b>
+    <thead>
+    <table>
+            <tr style="background: #131313; color :white;">
+                <th>Nome do equipameto</th>
+                <th>Descrição do equipameto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($equipamentos as $equipamento)
+            <tr>
+                <td>{{$equipamento->name}}</td>
+                <td>{{$equipamento->descricao}}</td>
             </tr>
 
             @endforeach
@@ -274,7 +312,7 @@ $clientes=App\Models\User::all();
 
 
              <div class="flex items-center justify-end mt-4">
-               <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
+                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
                     {{ __('Cancelar') }}
                 </a>
                 <x-button class="ml-4">
@@ -286,3 +324,55 @@ $clientes=App\Models\User::all();
 
 </x-app-layout>
 
+<div class="py-12" x-data="{add_modal:false}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200" >
+
+                    <div class="p-3 m-0.5" @click="add_modal = true" >
+                        <h1>Cadastro de Equipamento</h1>
+                   </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="fixed z-10 inset-0 overflow-y-auto" x-show="add_modal" >
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true" @click="add_modal = false">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="p-3">
+<b>
+    <h1>Cadastro de Equipamento</h1>
+</b>
+<form action="{{route('add-equipamento')}}" method="POST">
+            @csrf
+
+
+            <div>
+                <x-label for="name" :value="__('Nome do Equipamento')" />
+
+                <x-input id="name" class="block mt-1 w-full"  type="text" name="name" :value="old('name')" required autofocus />
+            </div>
+
+            <div>
+                <x-label for="descricao" :value="__('Descrição do Equipamento')" />
+
+                <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" :value="old('descricao')" required/>
+            </div>
+
+
+             <div class="flex items-center justify-end mt-4">
+                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
+                    {{ __('Cancelar') }}
+                </a>
+                <x-button class="ml-4">
+                    {{ __('Registre-se') }}
+                </x-button>
+            </div>
+
+        </form>
