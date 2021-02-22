@@ -1,6 +1,5 @@
 <x-app-layout>
     <style>
-
          .button1{
                 line-height: 22px;
                 cursor: pointer;
@@ -36,6 +35,22 @@
                 box-shadow: 2px 2px 4px;
 
             }
+
+            tr{
+
+                border-bottom: 1px solid #ddd;
+
+            }
+            th{
+                border-right: 1px solid #ddd;
+            }
+            table{
+                width: 70%;
+                padding: 5%;
+                text-align: center;
+                background: white;
+
+            }
     </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -46,33 +61,34 @@
    @php
 $clientes=App\Models\User::all();
 @endphp
+<center>
 
-<b>
-<h1>Todos os clientes</h1>
-</b>
-<table>
+    <b>
+        <h1>Todos os clientes</h1>
+    </b>
     <thead>
-        <tr>
-            <th>Id do cliente</th>
-            <th>Nome do cliente</th>
-            <th>Username do cliente</th>
-            <th>Cep do cliente</th>
-        </tr>   
-     </thead>
-    <tbody>
-        @foreach ($clientes as $cliente)
-        <tr>
-            <td>{{$cliente->id}}</td>
-            <td>{{$cliente->name}}</td>
-            <td>{{$cliente->username}}</td>
-            <td>{{$cliente->cep}}</td>
-        </tr>
+    <table>
+            <tr style="background: #131313; color :white;">
+                <th>Id do cliente</th>
+                <th>Nome do cliente</th>
+                <th>Username do cliente</th>
+                <th>Cep do cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($clientes as $cliente)
+            <tr>
+                <td style="">{{$cliente->id}}</td>
+                <td>{{$cliente->name}}</td>
+                <td>{{$cliente->username}}</td>
+                <td>{{$cliente->cep}}</td>
+            </tr>
 
-    @endforeach
+            @endforeach
 
-    </tbody>
-</table>
-
+        </tbody>
+    </table>
+</center>
 
 
     <div class="py-12" x-data="{add_modal:false}">
@@ -175,8 +191,31 @@ $clientes=App\Models\User::all();
 </div>
     </div>
 
+
+    <div class="py-12" x-data="{add_modal:false}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200" >
+
+                    <div class="p-3 m-0.5" @click="add_modal = true" >
+                        <h1>Cadastro de Aluno</h1>
+                   </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="fixed z-10 inset-0 overflow-y-auto" x-show="add_modal" >
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true" @click="add_modal = false">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="p-3">
 <b>
-<h1>Cadastro de Aluno</h1>
+    <h1>Cadastro de Aluno</h1>
 </b>
 <form action="{{route('registro')}}" method="POST">
             @csrf
