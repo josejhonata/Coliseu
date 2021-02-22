@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunosController;
 use App\Http\Controllers\FichaTreinoController;
+use App\Http\Controllers\EquipamentoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +37,6 @@ Route::get('/professor/delete/{ficha_treino}',[FichaTreinoController::class, 'de
 
 Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
 Route::post('/professor/ficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
+Route::post('/cadastro/equipamento',[EquipamentoController::class, 'store'])->name('add-equipamento');
 
 require __DIR__.'/auth.php';
