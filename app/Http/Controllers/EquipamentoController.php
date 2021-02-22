@@ -35,7 +35,17 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'descricao' => 'required',
+        ]);
+
+        Equipamento::create([
+            'name' => $request->name,
+            'descricao' => $request->descricao,
+        ]);
+
+        return redirect('dashboard');
     }
 
     /**
