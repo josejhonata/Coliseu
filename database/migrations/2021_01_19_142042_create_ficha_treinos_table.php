@@ -15,8 +15,11 @@ class CreateFichaTreinosTable extends Migration
     {
         Schema::create('ficha_treinos', function (Blueprint $table) {
             $table->id();
+            $table->string("equipamento");
+            $table->string("serie");
+            $table->integer("repeticao");
             $table->string("descricao");
-            $table->integer("user_id");
+            $table->string("user_name");
             $table->timestamps();
         });
     }
