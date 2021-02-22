@@ -113,6 +113,7 @@ $equipamentos=App\Models\equipamento::all();
             <tr style="background: #131313; color :white;">
                 <th>Nome do equipameto</th>
                 <th>Descrição do equipameto</th>
+                 <th>Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -120,6 +121,7 @@ $equipamentos=App\Models\equipamento::all();
             <tr>
                 <td>{{$equipamento->name}}</td>
                 <td>{{$equipamento->descricao}}</td>
+                 <td><a class="bg-red-200 rounded hover:bg-red-300" href="{{ route('rm-equipamento', $equipamento)}}">Excluir</a></td>
             </tr>
 
             @endforeach

@@ -90,6 +90,7 @@ class EquipamentoController extends Controller
      */
     public function destroy(equipamento $equipamento)
     {
-        //
+        $equipamento->delete();
+        return redirect('/dashboard');
     }
 }

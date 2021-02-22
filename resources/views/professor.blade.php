@@ -75,6 +75,7 @@ $equipamentos=App\Models\equipamento::all();
             <tr style="background: #131313; color :white;">
                 <th>Nome do equipameto</th>
                 <th>Descrição do equipameto</th>
+               
             </tr>
         </thead>
         <tbody>
