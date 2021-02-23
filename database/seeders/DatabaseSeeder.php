@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(4)->create(['tipo'=>'cliente']);
           \App\Models\User::factory(4)->create(['tipo'=>'professor']);
 
+
         $this->Call([
             FichaTreinoSeeder::class,
         ]);
