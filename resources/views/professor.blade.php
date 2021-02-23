@@ -13,45 +13,46 @@ $equipamentos=App\Models\equipamento::all();
 @endphp
 <center>
 
-    <b>
-        <h1>Todos os clientes</h1>
-    </b>
-    <table>
-        <thead>
-            <tr style=" background: #131313; color :white;">
-                <th>Id do cliente</th>
-                <th>Nome do cliente</th>
-                <th>Username do cliente</th>
-                <th>Cep do cliente</th>
+            <p class="text-lg text-center font-bold m-5">Todos os Clientes</p>
+            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+            <tr class="text-left border-b border-gray-300">
+                <th class="px-4 py-3">Id do Cliente</th>
+                <th class="px-4 py-3">Nome</th>
+                <th class="px-4 py-3">Username</th>
+                <th class="px-4 py-3">Cep</th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach ($clientes as $cliente)
-            <tr>
-                <td>{{$cliente->id}}</td>
-                <td>{{$cliente->name}}</td>
-                <td>{{$cliente->username}}</td>
-                <td>{{$cliente->cep}}</td>
+               
+            <!-- each row -->
+            <tr class="bg-gray-700 border-b border-gray-600">
+                @foreach ($clientes as $cliente)
+                <tr>
+                    <td>{{$cliente->id}}</td>
+                    <td>{{$cliente->name}}</td>
+                    <td>{{$cliente->username}}</td>
+                    <td>{{$cliente->cep}}</td>
+    
+                    @endforeach
+            </tr>              
+            </table>
+    
+            
+            
 
-                @endforeach
-            </tbody>
-        </table>
+            <p class="text-lg text-center font-bold m-5">Fichas de Treino</p>
+            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+            <tr class="text-left border-b border-gray-300">
+                <th class="px-4 py-3">Equipamento</th>
+                <th class="px-4 py-3">Quantidade Séries</th>
+                <th class="px-4 py-3">Repetição</th>
+                <th class="px-4 py-3">Descrição</th>
+                <th class="px-4 py-3">Cliente</th>
+                <th class="px-4 py-3">Opção 1</th>
+                <th class="px-4 py-3">Opção 2</th>
 
-        <b>
-            <h1>Fichas de treino</h1>
-        </b>
-        <table>
-            <thead>
-                <tr style=" background: #131313; color :white;">
-                    <th>Equipamento</th>
-                    <th>Quantidade de Série</th>
-                    <th>Quantidade de repetição</th>
-                    <th>Descrição</th>
-                    <th>Nome do cliente</th>
-                    <th>Opções</th>
-                </tr>
-            </thead>
-            <tbody>
+            </tr>
+               
+            <!-- each row -->
+            <tr class="bg-gray-700 border-b border-gray-600">
                 @foreach ($fichas as $ficha)
                 <tr>
                     <td>{{$ficha->equipamento}}</td>
@@ -59,36 +60,40 @@ $equipamentos=App\Models\equipamento::all();
                     <td>{{$ficha->repeticao}}</td>
                     <td>{{$ficha->descricao}}</td>
                     <td>{{$ficha->user_name}}</td>
-                    <td><a class="bg-red-200 rounded hover:bg-red-300" href="{{ route('rm-ficha', $ficha)}}">Excluir</a></td>
+                    <td><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('', $ficha)}}">Editar</button></td>
+                    <td><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" href="{{ route('rm-ficha', $ficha)}}">Excluir</button></td>
                     @endforeach
                 </tbody>
+            </tr>     
             </table>
+
+        
         </center>
 
         <center>
-    <b>
-        <h1>Todos os Equipamentos</h1>
-    </b>
 
-    <thead>
-    <table>
-            <tr style="background: #131313; color :white;">
-                <th>Nome do equipameto</th>
-                <th>Descrição do equipameto</th>
+            <p class="text-lg text-center font-bold m-5">Todos os Equipamentos</p>
+            <table class="rounded-t-lg m-5 w-2/6 mx-auto bg-gray-800 text-gray-200">
+            <tr class="text-left border-b border-gray-300">
+                <th class="px-4 py-3">Equipamento</th>
+                <th class="px-4 py-3">Descrição do Equipamento</th>
+            </tr>
                
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($equipamentos as $equipamento)
-            <tr>
-                <td>{{$equipamento->name}}</td>
-                <td>{{$equipamento->descricao}}</td>
-            </tr>
+            <!-- each row -->
+            <tr class="bg-gray-700 border-b border-gray-600">
+                @foreach ($equipamentos as $equipamento)
+                <tr>
+                    <td>{{$equipamento->name}}</td>
+                    <td>{{$equipamento->descricao}}</td>
+                </tr>
 
             @endforeach
+            </tr>              
+            </table>
+           
 
-        </tbody>
-    </table>
+    <thead>
+    
 </center>
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
