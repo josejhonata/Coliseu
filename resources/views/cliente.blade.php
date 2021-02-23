@@ -26,20 +26,20 @@ border-right: 1px solid #ddd;
 $fichas=App\Models\Ficha_treino::where('user_name',Auth::user()->name)->get();
 @endphp
 
-<b><h1>Ficha de Treino</h1></b>
-<table>
-    <thead>
-        <tr>
-            <th>Descrição da ficha</th>
-        </tr>   
-     </thead>
-    <tbody>
-        @foreach ($fichas as $ficha)
-        <tr>
-            <td>{{$ficha->descricao}}</td>
-        </tr>
-    @endforeach
-    </tbody>
-</table>
+            <p class="text-lg text-center font-bold m-5">Todos os Equipamentos</p>
+            <table class="rounded-t-lg m-5 w-1/6 mx-auto bg-gray-800 text-gray-200">
+            <tr class="text-left border-b border-gray-300">
+                <th class="px-4 py-3">Descrição</th>
+            </tr>
+               
+            <!-- each row -->
+            <tr class="bg-gray-700 border-b border-gray-600">
+                @foreach ($fichas as $ficha)
+                <tr>
+                    <td>{{$ficha->descricao}}</td>
+                </tr>               
+            </tr>              
+            @endforeach
+            </table>
 
  </x-app-layout>
