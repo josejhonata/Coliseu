@@ -60,7 +60,8 @@ $equipamentos=App\Models\equipamento::all();
                     <td>{{$ficha->repeticao}}</td>
                     <td>{{$ficha->descricao}}</td>
                     <td>{{$ficha->user_name}}</td>
-                    <td><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" href="{{ route('rm-ficha', $ficha)}}">Excluir</button></td>
+                    <td>
+                        <a href="{{ route('rm-ficha', $ficha)}}"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Excluir</button></td>
                     @endforeach
                 </tbody>
             </tr>     

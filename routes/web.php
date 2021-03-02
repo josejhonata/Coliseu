@@ -22,16 +22,41 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	
+		return view('dashboard');    	
+	  
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/cliente', function () {
+    
     return view('cliente');
+
 })->middleware(['auth'])->name('cliente');
 
 Route::get('/professor', function () {
+   
     return view('professor');
+
 })->middleware(['auth'])->name('professor');
+
+Route::get('/atendente/cadastroprofessor', function () {
+    
+    return view('cadastroprofessor');
+
+})->middleware(['auth'])->name('cadastroprofessor');
+
+Route::get('/atendente/cadastroaluno', function () {
+   
+       return view('cadastroaluno');
+   
+})->middleware(['auth'])->name('cadastroaluno');
+
+Route::get('/atendente/cadastroequipamento', function () {
+	    
+    return view('cadastroequipamento');
+    
+})->middleware(['auth'])->name('cadastroequipamento');
+
 
 Route::get('/professor/delete/{ficha_treino}',[FichaTreinoController::class, 'destroy'])->name('rm-ficha');
 Route::get('/equipamento/delete/{equipamento}',[EquipamentoController::class, 'destroy'])->name('rm-equipamento');
