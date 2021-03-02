@@ -31,7 +31,7 @@ $equipamentos=App\Models\equipamento::all();
                     <td>{{$cliente->username}}</td>
                     <td>{{$cliente->cep}}</td>
     
-                    @endforeach
+                @endforeach
             </tr>              
             </table>
     
@@ -69,27 +69,6 @@ $equipamentos=App\Models\equipamento::all();
 
         
         </center>
-
-        <center>
-
-            <p class="text-lg text-center font-bold m-5">Todos os Equipamentos</p>
-            <table class="rounded-t-lg m-5 w-2/6 mx-auto bg-gray-800 text-gray-200">
-            <tr class="text-left border-b border-gray-300">
-                <th class="px-4 py-3">Equipamento</th>
-                <th class="px-4 py-3">Descrição do Equipamento</th>
-            </tr>
-               
-            <!-- each row -->
-            <tr class="bg-gray-700 border-b border-gray-600">
-                @foreach ($equipamentos as $equipamento)
-                <tr>
-                    <td>{{$equipamento->name}}</td>
-                    <td>{{$equipamento->descricao}}</td>
-                </tr>
-
-            @endforeach
-            </tr>              
-            </table>
            
 
     <thead>
@@ -108,6 +87,25 @@ $equipamentos=App\Models\equipamento::all();
 
                                     <x-input id="equipamento" class="block mt-1 w-full" type="text" name="equipamento" :value="old('equipamento')" required/>
                                 </div>
+
+                                <!--<h1>Equipamento</h1>
+                                <div>
+                                
+                                    #@php
+                                        
+                                        //$clientes=App\Models\User::where('tipo','cliente')->get();
+                                        #$fichas=App\Models\Ficha_treino::all();
+                                        #$equipamentos=App\Models\equipamento::all();
+                                    #@endphp
+                                    #<select name="" id="" class="w-full block round" name="equipamento">
+                                        #@foreach ($equipamentos as $equipamento)
+                                            
+                                            #<option value="{{$equipamento->name}}">{{$equipamento->name}}</option>
+                                        #@endforeach
+                
+                                    #</select>
+                                </div>
+
 
 
                                 <div>
