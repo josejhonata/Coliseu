@@ -67,7 +67,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
         <h1>Todos os Clientes</h1>
     </b>
     <thead>
-    <table>
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr style="background: #131313; color :white;">
                 <th>Nome do Aluno</th>
                 <th>Username do Aluno</th>

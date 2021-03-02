@@ -16,7 +16,7 @@ $equipamentos=App\Models\equipamento::all();
             <p class="text-lg text-center font-bold m-5">Todos os Clientes</p>
             <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr class="text-left border-b border-gray-300">
-                <th class="px-4 py-3">Id do Cliente</th>
+
                 <th class="px-4 py-3">Nome</th>
                 <th class="px-4 py-3">Username</th>
                 <th class="px-4 py-3">Cep</th>
@@ -26,7 +26,6 @@ $equipamentos=App\Models\equipamento::all();
             <tr class="bg-gray-700 border-b border-gray-600">
                 @foreach ($clientes as $cliente)
                 <tr>
-                    <td>{{$cliente->id}}</td>
                     <td>{{$cliente->name}}</td>
                     <td>{{$cliente->username}}</td>
                     <td>{{$cliente->cep}}</td>

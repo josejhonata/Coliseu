@@ -68,7 +68,7 @@ $equipamentos=App\Models\equipamento::all();
         <h1>Todos os Equipamentos</h1>
     </b>
     <thead>
-    <table>
+    <table  class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr style="background: #131313; color :white;">
                 <th>Nome do equipameto</th>
                 <th>Descrição do equipameto</th>
@@ -81,7 +81,7 @@ $equipamentos=App\Models\equipamento::all();
                 <td>{{$equipamento->name}}</td>
                 <td>{{$equipamento->descricao}}</td>
                  <td>
-                    <a class="bg-red-200 rounded hover:bg-red-300" href="{{ route('rm-equipamento', $equipamento)}}">Excluir</a>
+                    <a class="bg-red-700 rounded hover:bg-red-300" href="{{ route('rm-equipamento', $equipamento)}}">Excluir</a>
                  </td>
             </tr>
 
