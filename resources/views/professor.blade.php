@@ -1,147 +1,99 @@
+<style type="text/css">
+.tamanho{
+    font-size: 40px;
+}
+
+
+
+</style>
 <x-app-layout>
 
 	<x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Coliseu') }}
-        </h2>
-    </x-slot>
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="flex items-center text-sm font-medium text-gray-900 hover:text-gray-900 hover:border-gray-900 focus:outline-none focus:text-gray-900 focus:border-gray-900 transition duration-150 ease-in-out">
+                            <div>Olá,{{ Auth::user()->name }}</div>
 
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+ 
+                    <x-slot name="content">
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Logout') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+            </x-slot> 
 @php
 $clientes=App\Models\User::where('tipo','cliente')->get();
 $fichas=App\Models\Ficha_treino::all();
 $equipamentos=App\Models\equipamento::all();
 @endphp
-<center>
-
-            <p class="text-lg text-center font-bold m-5">Todos os Clientes</p>
-            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
-            <tr class="text-left border-b border-gray-300">
-
-                <th class="px-4 py-3">Nome</th>
-                <th class="px-4 py-3">Username</th>
-                <th class="px-4 py-3">Cep</th>
-            </tr>
-               
-            <!-- each row -->
-            <tr class="bg-gray-700 border-b border-gray-600">
-                @foreach ($clientes as $cliente)
-                <tr>
-                    <td>{{$cliente->name}}</td>
-                    <td>{{$cliente->username}}</td>
-                    <td>{{$cliente->cep}}</td>
     
-                @endforeach
-            </tr>              
-            </table>
-    
-            
-            
+    <h1 class="tamanho">Fichas de treino cadastradas</h1>
 
-            <p class="text-lg text-center font-bold m-5">Fichas de Treino</p>
-            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
-            <tr class="text-left border-b border-gray-300">
-                <th class="px-4 py-3">Equipamento</th>
-                <th class="px-4 py-3">Quantidade Séries</th>
-                <th class="px-4 py-3">Repetição</th>
-                <th class="px-4 py-3">Descrição</th>
-                <th class="px-4 py-3">Cliente</th>
-                <th class="px-4 py-3">Opção 1</th>
-                <th class="px-4 py-3">Opção 2</th>
 
-            </tr>
-               
-            <!-- each row -->
-            <tr class="bg-gray-700 border-b border-gray-600">
-                @foreach ($fichas as $ficha)
-                <tr>
-                    <td>{{$ficha->equipamento}}</td>
-                    <td>{{$ficha->serie}}</td>
-                    <td>{{$ficha->repeticao}}</td>
-                    <td>{{$ficha->descricao}}</td>
-                    <td>{{$ficha->user_name}}</td>
-                    <td>
-                        <a href="{{ route('rm-ficha', $ficha)}}"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Excluir</button></td>
-                    @endforeach
-                </tbody>
-            </tr>     
-            </table>
-
+<div class="flex items-center justify-end mt-4" >
+    <a href="/cadastroficha">
+        <x-button class="ml-4" >Nova ficha de treino</x-button>
+        </a>
+</div>
         
-        </center>
-           
 
-    <thead>
     
+    <center>
+    <thead>
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+            <tr style="background: #131313; color :white;">
+                <th>Titulo</th>
+                <th>Tipo de treino</th>
+                <th>Nome do aluno</th>
+                <th>Stuação</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach ($fichas as $ficha)
+            <tr>
+                <td>{{$ficha->titulo}}</td>
+                <td>{{$ficha->tipo_de_treino}}</td>
+                <td>{{$ficha->user_name}}</td>
+                <td>{{$ficha->situacao}}</td>
+                <td>
+                <a href="">
+                        <x-button class="ml-4">Visualizar</x-button>
+                    </a>
+
+               <a href="">
+                        <x-button class="ml-4">Editar</x-button>
+                    </a>
+
+                    <a href="{{ route('rm-ficha', $ficha)}}">
+                        <x-button class="ml-4">Excluir</x-button>
+                    </a>
+                </td>
+            </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
 </center>
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200">
-                            <form method="POST" action="{{ route('add-ficha') }}">
-                                @csrf
-
-
-                                <div>
-                                    <x-label for="equipamento" :value="__('Equipamentos do treino')" />
-
-                                    <x-input id="equipamento" class="block mt-1 w-full" type="text" name="equipamento" :value="old('equipamento')" required/>
-                                </div>
-
-                                <!--<h1>Equipamento</h1>
-                                <div>
-                                
-                                    #@php
-                                        
-                                        //$clientes=App\Models\User::where('tipo','cliente')->get();
-                                        #$fichas=App\Models\Ficha_treino::all();
-                                        #$equipamentos=App\Models\equipamento::all();
-                                    #@endphp
-                                    #<select name="" id="" class="w-full block round" name="equipamento">
-                                        #@foreach ($equipamentos as $equipamento)
-                                            
-                                            #<option value="{{$equipamento->name}}">{{$equipamento->name}}</option>
-                                        #@endforeach
-                
-                                    #</select>
-                                </div>
-
-
-
-                                <div>
-                                    <x-label for="serie" :value="__('Quantidade de serie')" />
-
-                                    <x-input id="serie" class="block mt-1 w-full" type="text" name="serie" :value="old('serie')" required/>
-                                </div>
-
-
-                                <div>
-                                    <x-label for="repeticao" :value="__('Quantidade de repetição')" />
-
-                                    <x-input id="repeticao" class="block mt-1 w-full" type="text" name="repeticao" :value="old('repeticao')" required/>
-                                </div>
-
-                                <div>
-                                    <x-label for="descricao" :value="__('Descrição de treino')" />
-
-                                    <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" :value="old('descricao')" required/>
-                                </div>
-
-
-                                <div class="mt-4">
-                <x-label for="user_name" :value="__('Informe o nome do aluno')" />
-
-                <x-input id="user_name" class="block mt-1 w-full" type="text" name="user_name" :value="old('user_name')" required />
-            </div>
-
-
-            <x-button class="ml-4">
-                {{ __('Register') }}
-            </x-button>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-</div>
 
 </x-app-layout>
+
