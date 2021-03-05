@@ -45,7 +45,7 @@ class EquipamentoController extends Controller
             'descricao' => $request->descricao,
         ]);
 
-        return redirect('dashboard');
+        return view('cadastroequipamento');
     }
 
     /**
@@ -91,6 +91,6 @@ class EquipamentoController extends Controller
     public function destroy(equipamento $equipamento)
     {
         $equipamento->delete();
-        return redirect('/dashboard');
+        return view('cadastroequipamento');
     }
 }
