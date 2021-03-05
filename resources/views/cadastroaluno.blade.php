@@ -36,6 +36,9 @@
 
             }
 
+            .tamanho{
+                font-size: 20px;
+            }
             tr{
 
                 border-bottom: 1px solid #ddd;
@@ -52,11 +55,36 @@
 
             }
     </style>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Coliseu') }}
-        </h2>
-    </x-slot>
+   <x-slot name="header">
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="flex items-center text-sm font-medium text-gray-900 hover:text-gray-900 hover:border-gray-900 focus:outline-none focus:text-gray-900 focus:border-gray-900 transition duration-150 ease-in-out">
+                            <div><h1>Olá,{{ Auth::user()->name }}</h1></div>
+
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+ 
+                    <x-slot name="content">
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Logout') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+            </x-slot> 
 
    @php
 $clientes=App\Models\User::where('tipo','cliente')->get();
@@ -64,7 +92,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
 <center>
 
     <b>
-        <h1>Todos os Clientes</h1>
+        <h1 class="tamanho">Todos os Clientes</h1>
     </b>
     <thead>
     <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
@@ -74,6 +102,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
                 <th>Cpf do Aluno</th>
                 <th>Cep do Aluno</th>
                 <th>Tipo do Aluno</th>
+                <th>Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -84,6 +113,16 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
                 <td>{{$cliente->cpf}}</td>
                 <td>{{$cliente->cep}}</td>
                 <td>{{$cliente->tipo}}</td>
+                <td>
+                    
+                    <a href="">
+                        <x-button class="ml-4">Editar</x-button>
+                    </a>
+
+                    <a href="">
+                        <x-button class="ml-4">Excluir</x-button>
+                    </a>
+                </td>
             </tr>
 
             @endforeach
