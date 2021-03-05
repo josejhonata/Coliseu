@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunosController;
 use App\Http\Controllers\FichaTreinoController;
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\ExercicioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,12 +58,19 @@ Route::get('/atendente/cadastroequipamento', function () {
     
 })->middleware(['auth'])->name('cadastroequipamento');
 
+Route::get('/cadastroficha', function () {
+    
+        return view('cadastroficha');       
+      
+})->middleware(['auth'])->name('cadastroficha');
 
 Route::get('/professor/delete/{ficha_treino}',[FichaTreinoController::class, 'destroy'])->name('rm-ficha');
+
 Route::get('/equipamento/delete/{equipamento}',[EquipamentoController::class, 'destroy'])->name('rm-equipamento');
 
 Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
-Route::post('/professor/ficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
+Route::post('/cadastroficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
+Route::post('/cadastroexercicio',[ExercicioController::class, 'store'])->name('add-exercicio');
 Route::post('/cadastro/equipamento',[EquipamentoController::class, 'store'])->name('add-equipamento');
 
 require __DIR__.'/auth.php';
