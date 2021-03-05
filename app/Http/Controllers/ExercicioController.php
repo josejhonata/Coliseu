@@ -100,6 +100,7 @@ class ExercicioController extends Controller
      */
     public function destroy(exercicio $exercicio)
     {
-        //
+        $exercicio->delete();
+        return view('cadastroficha');
     }
 }

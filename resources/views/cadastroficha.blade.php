@@ -33,6 +33,7 @@
  @php
  $alunos=App\Models\User::where('tipo','cliente')->get();
  $equipamentos=App\Models\equipamento::all();
+ $exercicios=App\Models\exercicio::all();
  @endphp
 
 
@@ -115,17 +116,17 @@
 <form action="{{route('add-exercicio')}}" method="POST">
             @csrf
 
-            <div>
-                <x-label :value="__('Exercico ou equipamento')" />
+            
+             <div>
+                <x-label :value="__('Selecione o equipamento')" />
+                
                 <select name="equipamento" id="equipamento">
-                 <option disabled>Selecione</option>
-                @foreach ($equipamentos as $equipamento)
-                
-                   
-                    <option :value="equipamento">{{$equipamento->name}}</option>
-                
-                @endforeach
+                    <option disabled>Selecione</option>
+                    @foreach ($equipamentos as $equipament)
+                    <option :value="equipamento">{{$equipament->name}}</option>
+                    @endforeach
                 </select>
+                
             </div>
 
             <div>
@@ -182,4 +183,48 @@
 </div>     
 </div>
 </div>
+
+  <center>
+    <thead>
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+            <tr style="background: #131313; color :white;">
+                <th>Equipamento</th>
+                <th>Descrição</th>
+                <th>Serie</th>
+                <th>Repetição</th>
+                <th>Descanso</th>
+                <th>Observação</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach ($exercicios as $exercicio)
+            <tr>
+                <td>{{$exercicio->equipamento}}</td>
+                <td>{{$exercicio->descricao}}</td>
+                <td>{{$exercicio->serie}}</td>
+                <td>{{$exercicio->repeticao}}</td>
+                <td>{{$exercicio->descanso}}</td>
+                <td>{{$exercicio->observacao}}</td>
+                <td>
+                <a href="">
+                        <x-button class="ml-4">Visualizar</x-button>
+                    </a>
+
+               <a href="">
+                        <x-button class="ml-4">Editar</x-button>
+                    </a>
+
+                    <a href="{{ route('rm-exercicio', $exercicio)}}">
+                        <x-button class="ml-4">Excluir</x-button>
+                    </a>
+                </td>
+            </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
+</center>
 </x-app-layout>

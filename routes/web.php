@@ -68,6 +68,8 @@ Route::get('/professor/delete/{ficha_treino}',[FichaTreinoController::class, 'de
 
 Route::get('/equipamento/delete/{equipamento}',[EquipamentoController::class, 'destroy'])->name('rm-equipamento');
 
+Route::get('/cadastroexercicio/delete/{exercicio}',[ExercicioController::class, 'destroy'])->name('rm-exercicio');
+
 Route::post('/cadastro',[RegisteredUserController::class, 'store'])->name('registro');
 Route::post('/cadastroficha',[FichaTreinoController::class, 'store'])->name('add-ficha');
 Route::post('/cadastroexercicio',[ExercicioController::class, 'store'])->name('add-exercicio');
