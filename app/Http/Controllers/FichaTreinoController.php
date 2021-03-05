@@ -36,19 +36,23 @@ class FichaTreinoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'equipamento'=> 'required',
-            'serie' => 'required',
-            'repeticao' => 'required',
-            'descricao' => 'required',
+            'titulo' => 'required',
+            'data_inicio' => 'required',
+            'data_final' => 'required',
             'user_name' => 'required',
+            'situacao' => 'required',
+            'tipo_de_treino' => 'required',
+            'user_professor' => 'required',
         ]);
 
         Ficha_treino::create([
-            'equipamento' => $request->equipamento,
-            'serie' => $request->serie,
-            'repeticao' => $request->repeticao,
-            'descricao' => $request->descricao,
+            'titulo' => $request->titulo,
+            'data_inicio' => $request->data_inicio,
+            'data_final' => $request->data_final,
             'user_name' => $request->user_name,
+            'situacao' => $request->situacao,
+            'tipo_de_treino' => $request->tipo_de_treino,
+            'user_professor' => $request->user_professor,
         ]);
 
         return redirect('/professor');
