@@ -21,7 +21,7 @@ class CreateExerciciosTable extends Migration
             $table->string("repeticao");
             $table->string("descanso");
             $table->string("observacao");
-            $table->string("tipo_de_treino");
+            $table->string("id_ficha");
             $table->timestamps();
         });
     }

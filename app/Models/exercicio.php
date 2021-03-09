@@ -15,6 +15,6 @@ class exercicio extends Model
         'repeticao',
         'descanso',
         'observacao',
-        'tipo_de_treino',
+        'id_ficha',
     ];
 }

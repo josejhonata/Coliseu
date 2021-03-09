@@ -35,6 +35,7 @@ class ExercicioController extends Controller
      */
     public function store(Request $request)
     {
+       
         $request->validate([
             'equipamento'=> 'required',
             'descricao' => 'required',
@@ -42,7 +43,7 @@ class ExercicioController extends Controller
             'repeticao' => 'required',
             'descanso' => 'required',
             'observacao' => 'required',
-            'tipo_de_treino' => 'required',
+            'id_ficha' => 'required',
         ]);
 
         Exercicio::create([
@@ -52,10 +53,11 @@ class ExercicioController extends Controller
             'repeticao' => $request->repeticao,
             'descanso' =>  $request->descanso,
             'observacao' => $request->observacao,
-            'tipo_de_treino' => $request->tipo_de_treino,
+            'id_ficha' => $request->id_ficha,
         ]);
 
-        return view('cadastroficha');
+        
+        return redirect('cadastroexercicio',);
     }
 
     /**
@@ -101,6 +103,6 @@ class ExercicioController extends Controller
     public function destroy(exercicio $exercicio)
     {
         $exercicio->delete();
-        return view('cadastroficha');
+        return route('cadastroficha');
     }
 }
