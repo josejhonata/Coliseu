@@ -75,11 +75,11 @@ $equipamentos=App\Models\equipamento::all();
                 <td>{{$ficha->user_name}}</td>
                 <td>{{$ficha->situacao}}</td>
                 <td>
-                <a href="">
+                <a href=""  >
                         <x-button class="ml-4">Visualizar</x-button>
                     </a>
 
-               <a href="">
+               <a href="{{ route('edit-ficha', $ficha)}}">
                         <x-button class="ml-4">Editar</x-button>
                     </a>
 
