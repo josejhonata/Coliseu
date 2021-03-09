@@ -106,7 +106,7 @@ $equipamentos=App\Models\equipamento::all();
                 <td>{{$equipamento->name}}</td>
                 <td>{{$equipamento->descricao}}</td>
                  <td>
-                    <a href="">
+                    <a href="{{route('edit-equipamento', $equipamento)}}">
                         <x-button class="ml-4">Editar</x-button>
                     </a>
 

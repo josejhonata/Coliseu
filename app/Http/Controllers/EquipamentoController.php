@@ -79,7 +79,13 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, equipamento $equipamento)
     {
-        //
+        $equipamento->update([
+            'name' => $request->name,
+            'descricao' => $request->descricao,
+        ]);
+
+        return view('cadastroequipamento');
+
     }
 
     /**
