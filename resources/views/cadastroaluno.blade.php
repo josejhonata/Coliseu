@@ -115,11 +115,11 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
                 <td>{{$cliente->tipo}}</td>
                 <td>
                     
-                    <a href="">
+                    <a href="{{ route('edit-user', $cliente->id)}}">
                         <x-button class="ml-4">Editar</x-button>
                     </a>
 
-                    <a href="">
+                    <a href="{{ route('rm-user', $cliente->id)}}">
                         <x-button class="ml-4">Excluir</x-button>
                     </a>
                 </td>

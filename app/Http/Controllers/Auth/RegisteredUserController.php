@@ -62,4 +62,27 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+
+    public function update(Request $request, User $User)
+    {
+        $User->update([
+
+            'name' => $request->name,
+            'email' => $request->email,
+            'cpf' => $request->cpf,
+            'cep' => $request->cep,
+            'username'=> $request->username,
+            'tipo' => $request->tipo,
+
+        ]);
+
+        return redirect('dashboard');
+    }
+
+    public function destroy(User $User)
+    {
+        $User->delete();
+        return redirect('/dashboard');
+    }
 }

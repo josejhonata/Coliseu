@@ -19,6 +19,12 @@ border-right: 1px solid #ddd;
 </style>
 <x-app-layout>
 
+
+@php
+$fichas=App\Models\Ficha_treino::all();
+$cliente=Auth::user()->id;
+@endphp
+
 	<x-slot name="header">
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -45,14 +51,13 @@ border-right: 1px solid #ddd;
                                 {{ __('Logout') }}
                             </x-dropdown-link>
                         </form>
+
+                        <a href="{{ route('edit-user', $cliente)}}">Alterar Perfil</a>
                     </x-slot>
                 </x-dropdown>
             </div>
             </x-slot>   
 
-@php
-$fichas=App\Models\Ficha_treino::all();
-@endphp
 
 <h1 class="tamanho">Minhas fichas de treino</h1>
 

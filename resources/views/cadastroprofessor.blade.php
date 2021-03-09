@@ -114,11 +114,11 @@ $professors=App\Models\User::where('tipo','professor')->get();
                 <td>{{$professor->cep}}</td>
                 <td>{{$professor->tipo}}</td>
                 <td>
-                    <a href="">
+                    <a href="{{ route('edit-user', $professor->id)}}">
                         <x-button class="ml-4">Editar</x-button>
                     </a>
 
-                    <a href="">
+                    <a href="{{ route('rm-user', $professor->id)}}">
                         <x-button class="ml-4">Excluir</x-button>
                     </a>
                 </td>
