@@ -41,52 +41,53 @@ $users=App\Models\User::find($id);
 
 
 <b>
-    <h1>Editando cadastro de Aluno</h1>
+    <h1 class="flex items-center justify-center mt-6">Editando cadastro de Aluno</h1>
 </b>
 <form action="{{route('update-user',$id)}}" method="POST">
             @method('PUT')
             @csrf
+            <div class="flex items-center justify-center mt-8">
 
             <div>
 
-                <x-input id="tipo" class="block mt-1 w-full" type="hidden" name="tipo" value="{{$users->tipo}}"/>
+                <x-input id="tipo" class="block mt-1 w-f" type="hidden" name="tipo" value="{{$users->tipo}}"/>
             </div>
 
             <div>
                 <x-label for="name" :value="__('Nome')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$users->name}}" required/>
+                <x-input id="name" class="block mt-1 w-11/12" type="text" name="name" value="{{$users->name}}" required/>
             </div>
 
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="text" name="email" value="{{$users->email}}" required/>
+                <x-input id="email" class="block mt-1 w-11/12" type="text" name="email" value="{{$users->email}}" required/>
             </div>
 
 
             <div>
                 <x-label for="cpf" :value="__('Cpf')" />
 
-                <x-input id="cpf" class="block mt-1 w-full"  type="text" name="cpf" value="{{$users->cpf}}" required/>
+                <x-input id="cpf" class="block mt-1 w-11/12"  type="text" name="cpf" value="{{$users->cpf}}" required/>
             </div>
 
-             <div class="mt-4">
+             <div class="">
                 <x-label for="cep" :value="__('CEP')" />
 
-                <x-input id="cep" class="block mt-1 w-full" type="text" name="cep" value="{{$users->cep}}" required />
+                <x-input id="cep" class="block mt-1 w-11/12" type="text" name="cep" value="{{$users->cep}}" required />
             </div>
 
             <div>
                 <x-label for="username" :value="__('Nome de usuário')" />
 
-                <x-input id="username" class="block mt-1 w-full" type="text" name="username" value="{{$users->username}}" required/>
+                <x-input id="username" class="block mt-1 w-11/12" type="text" name="username" value="{{$users->username}}" required/>
+            </div>
+
             </div>
 
 
-
-
-             <div class="flex items-center justify-end mt-4">
+             <div class="flex items-center justify-center mt-4">
                 <x-button class="ml-4">
                     {{ __('Salvar') }}
                 </x-button>
