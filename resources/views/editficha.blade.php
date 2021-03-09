@@ -1,6 +1,6 @@
 <x-app-layout>
 
-	<x-slot name="header">
+    <x-slot name="header">
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -30,57 +30,60 @@
                 </x-dropdown>
             </div>
  </x-slot>
- @php
- $alunos=App\Models\User::where('tipo','cliente')->get();
- $equipamentos=App\Models\equipamento::all();
- $exercicios=App\Models\exercicio::all();
- @endphp
 
 
+@php
+$id= request()->route()->parameters['ficha_treino'];
 
-<form action="{{route('add-ficha')}}" method="POST">
+$fichas=App\Models\Ficha_treino::find($id);
+
+@endphp
+
+<h1>Editando Cadastro da ficha</h1>
+
+<form action="{{route('update-ficha',$id)}}" method="POST">
+            @method('PUT')
             @csrf
 
 
             <div>
                 <x-label for="titulo" :value="__('Titulo do treino')" />
 
-                <x-input id="titulo" class="block mt-1 w-full"  type="text" name="titulo" :value="old('titulo')" required autofocus />
+                <x-input id="titulo" class="block mt-1 w-full" value="{{$fichas->titulo}}"  type="text" name="titulo"  required autofocus />
             </div>
 
             <div>
                 <x-label :value="__('Data de inicio')" />
 
-                <x-input id="data_inicio" class="block mt-1 w-full" type="date" name="data_inicio" :value="old('data_inicio')" required/>
+                <x-input id="data_inicio" class="block mt-1 w-full" value="{{$fichas->data_inicio}}" type="text" name="data_inicio" required/>
             </div>
 
              <div>
                 <x-label :value="__('Data final')" />
-                <x-input id="data_final" class="block mt-1 w-full" type="date" name="data_final" :value="old('data_final')" required/>
+
+                <x-input id="data_final" class="block mt-1 w-full"  value="{{$fichas->data_final}}" type="text" name="data_final" required/>
+            </div>
+
+            <div>
+                
+              <x-label :value="__('Nome do aluno')" />
+
+                <x-input id="user_name" class="block mt-1 w-full"  value="{{$fichas->user_name}}" type="text" name="user_name" required/>
+
             </div>
 
              <div>
-                <x-label :value="__('Selecione o aluno')" />
                 
-                <select name="user_name" id="user_name">
-                    <option disabled>Selecione</option>
-                    @foreach ($alunos as $aluno)
-                    <option :value="user_name">{{$aluno->name}}</option>
-                    @endforeach
-                </select>
-                
-            </div>
+            <x-label for="situacao" :value="__('Situação do treino')" />
 
-             <div>
-                
-              <x-input id="situacao" class="block mt-1 w-full" type="hidden" name="situacao" :value="'ativa'"/>
+                <x-input id="situacao" class="block mt-1 w-full" value="{{$fichas->situacao}}"  type="text" name="situacao" required />
 
             </div>
 
              <div>
                 <x-label for="tipo_de_treino" :value="__('Tipo de treino')" />
 
-                <x-input id="tipo_de_treino" class="block mt-1 w-full" type="text" name="tipo_de_treino" :value="old('tipo_de_treino')" required/>
+                <x-input id="tipo_de_treino" class="block mt-1 w-full" value="{{$fichas->tipo_de_treino}}" type="text" name="tipo_de_treino" required/>
             </div>
 
              <div>
@@ -94,8 +97,4 @@
                 </a>
         </form>
 
-
-
-
- 
-</x-app-layout>
+ </x-app-layout>

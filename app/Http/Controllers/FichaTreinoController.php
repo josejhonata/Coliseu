@@ -35,6 +35,8 @@ class FichaTreinoController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'titulo' => 'required',
             'data_inicio' => 'required',
@@ -44,6 +46,8 @@ class FichaTreinoController extends Controller
             'tipo_de_treino' => 'required',
             'user_professor' => 'required',
         ]);
+        
+        
 
         Ficha_treino::create([
             'titulo' => $request->titulo,
@@ -55,7 +59,8 @@ class FichaTreinoController extends Controller
             'user_professor' => $request->user_professor,
         ]);
 
-        return redirect('/professor');
+        
+        return redirect('/cadastroexercicio');
     }
 
     /**
@@ -89,7 +94,19 @@ class FichaTreinoController extends Controller
      */
     public function update(Request $request, Ficha_treino $ficha_treino)
     {
-        //
+        $ficha_treino->update([
+
+            'titulo' => $request->titulo,
+            'data_inicio' => $request->data_inicio,
+            'data_final' => $request->data_final,
+            'user_name' => $request->user_name,
+            'situacao' => $request->situacao,
+            'tipo_de_treino' => $request->tipo_de_treino,
+            'user_professor' => $request->user_professor,
+
+        ]);
+
+        return redirect('professor');
     }
 
     /**
