@@ -85,7 +85,7 @@ $cliente=Auth::user()->id;
                 <td>{{$ficha->tipo_de_treino}}</td>
                 <td>{{$ficha->situacao}}</td>
                 <td>
-                    <a href="">
+                    <a href="{{ route('visu-user', $ficha->id)}}">
                     <x-button class="ml-4">Visualizar</x-button>
                     </a>
 
