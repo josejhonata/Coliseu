@@ -40,33 +40,36 @@ $equipamentos=App\Models\equipamento::find($id);
  @endphp
 
 
-<b>
-    <h1>Cadastro de Equipamento</h1>
-</b>
-<form action="{{route('update-equipamento',$id)}}" method="POST">
+        <div class="text:center">
+
+            <b>
+                <h1 class="flex items-center justify-center mt-8" >Cadastro de Equipamento</h1>
+            </b>
+        </div>
+        <form action="{{route('update-equipamento',$id)}}" method="POST">
             @method('PUT')
             @csrf
 
-
-            <div>
+            <div class="flex items-center justify-center mt-4">
+            <div class="justify-items-center">
                 <x-label for="name" :value="__('Nome do Equipamento')" />
 
-                <x-input id="name" class="block mt-1 w-full"  type="text" name="name" value="{{$equipamentos->name}}" required autofocus />
+                <x-input id="name" class="block mt-1 w-9/12"  type="text" name="name" value="{{$equipamentos->name}}" required autofocus />
             </div>
 
             <div>
                 <x-label for="descricao" :value="__('Descrição do Equipamento')" />
 
-                <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" value="{{$equipamentos->descricao}}" required/>
+                <x-input id="descricao" class="block mt-1 w-9/12" type="text" name="descricao" value="{{$equipamentos->descricao}}" required/>
             </div>
 
-
-             <div class="flex items-center justify-end mt-4">
+            </div>
+             <div class="flex items-center justify-center mt-4">
                  <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
                     {{ __('Cancelar') }}
                 </a>
                 <x-button class="ml-4">
-                    {{ __('Registre-se') }}
+                    {{ __('Registre') }}
                 </x-button>
             </div>
 
