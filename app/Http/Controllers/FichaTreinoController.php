@@ -71,7 +71,7 @@ class FichaTreinoController extends Controller
      */
     public function show(Ficha_treino $ficha_treino)
     {
-        //
+        return view('visualizarficha');
     }
 
     /**
