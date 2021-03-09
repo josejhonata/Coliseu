@@ -96,6 +96,11 @@ Route::get('/atendente/{User}', function () {
       
 })->middleware(['auth'])->name('edit-user');
 
+Route::get('/cliente/{User}', function () {
+    
+        return view('visualizaruser');       
+      
+})->middleware(['auth'])->name('visu-user');
 
 Route::put('/professor/update/{ficha_treino}', [FichaTreinoController::class, 'update'])->name('update-ficha')->middleware(['auth']);
 
