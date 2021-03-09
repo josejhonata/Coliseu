@@ -44,12 +44,12 @@ $fichas=App\Models\Ficha_treino::all();
 $equipamentos=App\Models\equipamento::all();
 @endphp
     
-    <h1 class="tamanho">Fichas de treino cadastradas</h1>
+    <h1 class="tamanho" class="flex items-center justify-center mt-4">Fichas de treino cadastradas</h1>
 
 
-<div class="flex items-center justify-end mt-4" >
+<div class="flex items-center justify-end mt-2" >
     <a href="/cadastroficha">
-        <x-button class="ml-4" >Nova ficha de treino</x-button>
+        <x-button class="ml-2" >Nova ficha de treino</x-button>
         </a>
 </div>
         
@@ -75,9 +75,6 @@ $equipamentos=App\Models\equipamento::all();
                 <td>{{$ficha->user_name}}</td>
                 <td>{{$ficha->situacao}}</td>
                 <td>
-                <a href=""  >
-                        <x-button class="ml-4">Visualizar</x-button>
-                    </a>
 
                <a href="{{ route('edit-ficha', $ficha)}}">
                         <x-button class="ml-4">Editar</x-button>
