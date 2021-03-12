@@ -34,7 +34,8 @@ class ExercicioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $exer= $request->id_ficha;
        
         $request->validate([
             'equipamento'=> 'required',
@@ -57,7 +58,7 @@ class ExercicioController extends Controller
         ]);
 
         
-        return redirect('cadastroexercicio',);
+        return redirect('/professor');
     }
 
     /**
