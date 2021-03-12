@@ -91,37 +91,75 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
 @endphp
 <center>
 
-    <b>
-        <h1 class="tamanho">Todos os Clientes</h1>
-    </b>
+   
+    <h1 class="mt-6 text-4xl font-sans md:font-serif">Todos os Alunos</h1>
+
     <thead>
     <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr style="background: #131313; color :white;">
+                <th>Email do Aluno</th>
                 <th>Nome do Aluno</th>
-                <th>Username do Aluno</th>
-                <th>Cpf do Aluno</th>
-                <th>Cep do Aluno</th>
-                <th>Tipo do Aluno</th>
+                <th>CPF do Aluno</th>
+                <th>CEP do Aluno</th>
                 <th>Opções</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($clientes as $cliente)
             <tr>
-                <td>{{$cliente->name}}</td>
+                <td>{{$cliente->email}}</td>
                 <td>{{$cliente->username}}</td>
                 <td>{{$cliente->cpf}}</td>
-                <td>{{$cliente->cep}}</td>
-                <td>{{$cliente->tipo}}</td>
+                <td>{{$cliente->cep}}</td>  
                 <td>
                     
                     <a href="{{ route('edit-user', $cliente->id)}}">
                         <x-button class="ml-4">Editar</x-button>
                     </a>
 
-                    <a href="{{ route('rm-user', $cliente->id)}}">
-                        <x-button class="ml-4">Excluir</x-button>
-                    </a>
+                    <div x-data="{add_modal:false}">
+
+                        <div  @click="add_modal = true">
+
+                                <x-button class="ml-4">Excluir</x-button>
+                        </div>
+                        <div class="fixed z-10 inset-0 overflow-y-auto" x-show="add_modal" >
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    
+                              <div class="fixed inset-0 transition-opacity" aria-hidden="true" @click="add_modal = false">
+                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                              </div>
+                    
+                              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                  <div class="sm:flex sm:items-start">
+                                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                      <!-- Heroicon name: outline/exclamation -->
+                                      <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                      </svg>
+                                    </div>
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                      <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                                        Exclusão Conta
+                                      </h3>
+                                      <div class="mt-2">
+                                        <p class="text-sm text-gray-500">
+                                          Você Realmente deseja Realizar a Exclusão? Está ação é Feita de Maneira Permanente, Não sendo Possível Recuperar as Informações Excluídas.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                  <a href="{{ route('rm-user', $cliente->id)}}" type="button"  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                    Excluir
+                                  </button>
+                                  <a href="/atendente/cadastroaluno" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                    Cancelar
+                                  </a>
+                                </div>
+                    </div>
                 </td>
             </tr>
 
@@ -134,15 +172,13 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
 
     <div class="py-12" x-data="{add_modal:false}">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200" >
-
-                    <div class="p-3 m-0.5" @click="add_modal = true" >
-                        <h1>Cadastro de Aluno</h1>
+           
+               
+                <div class="flex justify-end">
+                    <div class="p-3 m-0.5 " @click="add_modal = true" >
+                        <x-button>Cadastrar Aluno</x-button>
                    </div>
                 </div>
-
-            </div>
         </div>
         <div class="fixed z-10 inset-0 overflow-y-auto" x-show="add_modal" >
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -172,16 +208,16 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
             </div>
 
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('E-mail')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required/>
+                <x-input id="email" class="block mt-1 w-full" placeholder="Ex: liliane@gmail.com" type="text" name="email" :value="old('email')" required/>
             </div>
 
 
             <div>
-                <x-label for="cpf" :value="__('Cpf')" />
+                <x-label for="cpf" :value="__('CPF')" />
 
-                <x-input id="cpf" class="block mt-1 w-full"  type="text" name="cpf" :value="old('cpf')" required/>
+                <x-input id="cpf" class="block mt-1 w-full" placeholder="Ex: 23145270232" type="text" name="cpf" :value="old('cpf')" required/>
             </div>
 
              <div class="mt-4">
@@ -193,7 +229,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
             <div>
                 <x-label for="username" :value="__('Nome de usuário')" />
 
-                <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required/>
+                <x-input id="username" class="block mt-1 w-full" placeholder="Ex: Lilasnd" type="text" name="username" :value="old('username')" required/>
             </div>
 
 
@@ -202,13 +238,13 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
             <div>
                 <x-label for="password" :value="__('Senha')" />
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password"/>
+                <x-input id="password" class="block mt-1 w-full" placeholder="Ex: 23265656s" type="password" name="password" required autocomplete="new-password"/>
             </div>
 
              <div>
                 <x-label for="password_confirmation" :value="__('Confirma Senha')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required/>
+                <x-input id="password_confirmation" class="block mt-1 w-full"  placeholder="Ex: 23265656s" type="password" name="password_confirmation" required/>
             </div>
 
 
@@ -218,7 +254,7 @@ $clientes=App\Models\User::where('tipo','cliente')->get();
                     {{ __('Cancelar') }}
                 </a>
                 <x-button class="ml-4">
-                    {{ __('Registre-se') }}
+                    {{ __('Salvar') }}
                 </x-button>
             </div>
 
