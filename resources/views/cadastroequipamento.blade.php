@@ -193,9 +193,13 @@ $equipamentos=App\Models\equipamento::all();
             </div>
 
             <div>
-                <x-label for="descricao" :value="__('Descrição do Equipamento')" />
+                <x-label :value="__('Descrição do Equipamento')" />
 
-                <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" :value="old('descricao')" required/>
+                <select name="descricao" id="descricao">
+                    <option disabled>Selecione</option>
+                    <option >Funcionando</option>
+                    <option >Manutenção</option>
+                </select>
             </div>
 
 

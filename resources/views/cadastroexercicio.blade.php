@@ -39,7 +39,9 @@ $equipamentos=App\Models\equipamento::all();
 $exercicios=App\Models\exercicio::all();
  @endphp
 
+
  <center>
+    <h1>Escolher a Ficha para Cadastrar Exercicio</h1>
     <thead>
     <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr style="background: #131313; color :white;">
