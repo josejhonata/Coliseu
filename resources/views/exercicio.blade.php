@@ -39,7 +39,7 @@
                                     
 $id= request()->route()->parameters['exer'];
 $fichas=App\Models\Ficha_treino::where('id', $id)->get();
-$equipamentos=App\Models\equipamento::all();
+$equipamentos=App\Models\equipamento::where('descricao','Funcionando')->get();
 @endphp 
 
 
@@ -69,7 +69,7 @@ $equipamentos=App\Models\equipamento::all();
         </tbody>
     </table>
 </center>
-
+ 
 <b>
     <h1>Cadastro de exercicio</h1>
 </b>
