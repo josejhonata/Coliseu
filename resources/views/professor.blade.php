@@ -47,13 +47,18 @@ $equipamentos=App\Models\equipamento::all();
     <h1 class="flex items-center justify-center pr-96 mt-6 text-4xl font-sans">Fichas de treino cadastradas</h1>
 
 
+
 <div class="flex items-center justify-end pr-6" >
     <a href="/cadastroficha">
         <x-button class="" >Nova ficha de treino</x-button>
         </a>
 </div>
         
-
+<div class="flex items-center justify-end pr-6" >
+    <a href="/cadastroexercicio">
+             <x-button class="ml-3">Cadastrar exercicio</x-button>
+                    </a>
+</div>
     
     <center>
     <thead>
@@ -78,7 +83,7 @@ $equipamentos=App\Models\equipamento::all();
 
                <a href="{{ route('edit-ficha', $ficha)}}">
                         <x-button class="ml-4">Editar</x-button>
-                    </a>
+                    </a>  
 
                     <div x-data="{add_modal:false}">
 
