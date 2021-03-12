@@ -61,7 +61,7 @@ $exercicios=App\Models\exercicio::all();
             </x-slot>   
 
 
-<h1 class="tamanho">Minhas fichas de treino</h1>
+<h1 class="flex items-center justify-center pr-96 mt-6 text-4xl font-sans">Minhas fichas de treino</h1>
 
 <center>
     <thead>

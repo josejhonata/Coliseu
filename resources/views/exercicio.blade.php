@@ -69,10 +69,10 @@ $equipamentos=App\Models\equipamento::where('descricao','Funcionando')->get();
         </tbody>
     </table>
 </center>
- 
-<b>
-    <h1>Cadastro de exercicio</h1>
-</b>
+
+<h1 class="flex place-content-center pt-10  mt-6 text-4xl font-sans">Cadastro de exercicio</h1>
+<div class="flex place-content-center pt-6">
+
 
 <form action="{{route('add-exercicio')}}" method="POST">
             @csrf
@@ -125,14 +125,15 @@ $equipamentos=App\Models\equipamento::where('descricao','Funcionando')->get();
     
                 <x-input id="id_ficha" class="block mt-1 w-full" type="hidden" name="id_ficha" value="{{$id}}"/>
             </div>
-
-                <x-button class="ml-4">
+                <div class="pt-6 pl-64">
+                <x-button>
                     {{ __('Salvar') }}
                 </x-button>
+                </div>
             </div>
 
         </form>
-
+    </div>
  </x-app-layout>
 
 

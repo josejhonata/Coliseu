@@ -54,7 +54,7 @@ $equipamentos=App\Models\equipamento::all();
         </a>
 </div>
         
-<div class="flex items-center justify-end pr-6" >
+<div class="flex items-center justify-end pr-6 pt-6" >
     <a href="/cadastroexercicio">
              <x-button class="ml-3">Cadastrar exercicio</x-button>
                     </a>

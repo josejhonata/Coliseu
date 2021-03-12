@@ -38,6 +38,7 @@
 
 
 
+<div class="flex place-content-center pt-10">
 <form action="{{route('add-ficha')}}" method="POST">
             @csrf
 
@@ -45,7 +46,7 @@
             <div>
                 <x-label for="titulo" :value="__('Titulo do treino')" />
 
-                <x-input id="titulo" class="block mt-1 w-full"  type="text" name="titulo" :value="old('titulo')" required autofocus />
+                <x-input id="titulo" class="block mt-3 w-full"  type="text" name="titulo" :value="old('titulo')" required autofocus />
             </div>
 
             <div>
@@ -87,13 +88,16 @@
 
                 <x-input id="user_professor" class="block mt-1 w-full" type="hidden" name="user_professor" value="{{Auth::user()->name}}"/>
             </div>
-          <a href="">
-           <x-button class="ml-4" type="submit">
+        <div class="pt-6 pl-64">
+          <a href="" >
+           <x-button class="" type="submit">
                     {{ __('Salvar') }}
                 </x-button>
                 </a>
         </form>
-
+        </div>
+    </div>
+    </div>
 
 
 

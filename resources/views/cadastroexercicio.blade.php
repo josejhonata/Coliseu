@@ -41,7 +41,7 @@ $exercicios=App\Models\exercicio::all();
 
 
  <center>
-    <h1>Escolher a Ficha para Cadastrar Exercicio</h1>
+    <h1 class="mt-6 text-4xl font-sans">Escolher a Ficha para Cadastrar Exercicio</h1>
     <thead>
     <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
             <tr style="background: #131313; color :white;">
