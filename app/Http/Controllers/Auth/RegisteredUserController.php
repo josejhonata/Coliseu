@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        //
     }
 
     /**
@@ -32,6 +32,9 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $utipo = $request->tipo;
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -56,11 +59,14 @@ class RegisteredUserController extends Controller
             
         ]));
 
+        if ($utipo == "cliente") {
+            return redirect('/atendente/cadastroaluno');
+        }else{
+            return redirect('/atendente/cadastroprofessor');
+        }
         
 
-        event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
     }
 
 
