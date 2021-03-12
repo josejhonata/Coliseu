@@ -51,11 +51,9 @@
 </style>
 
     <div class=" bg-white-900 flex items-center justify-center px-5 py-5">
-    <div class="bg-gray-800 text-gray-500 rounded shadow-xl py-3 px-3 w-full lg:w-1/2" x-data="{chartData:chartData()}" x-init="chartData.fetch()">
-        <h1>Relatório  Financeiro</h1>
+    <div class="bg-gray-800 text-gray-500  shadow-xl py-3 px-3 w-full lg:w-1/2" x-data="{chartData:chartData()}" x-init="chartData.fetch()">
         <div class="flex flex-wrap items-end">
             <div class="flex-1">
-                <h3 class="text-lg font-semibold leading-tight">Arrecadação</h3>
             </div>
             <div class="relative" @click.away="chartData.showDropdown=false">
                 <button class="text-xs hover:text-gray-300 h-6 focus:outline-none" @click="chartData.showDropdown=!chartData.showDropdown">
@@ -73,21 +71,39 @@
                         </ul>
                     </div>
                 </div>
+
+               
             </div>
         </div>
         <div class="flex flex-wrap items-end mb-5">
-            <h4 class="text-2xl lg:text-3xl text-white font-semibold leading-tight inline-block mr-2" x-text="'$'+(chartData.data?chartData.data[chartData.date].total.comma_formatter():0)">0</h4>
-            <span class="inline-block" :class="chartData.data&&chartData.data[chartData.date].upDown<0?'text-red-500':'text-green-500'"><span x-text="chartData.data&&chartData.data[chartData.date].upDown<0?'▼':'▲'">0</span> <span x-text="chartData.data?chartData.data[chartData.date].upDown:0">0</span>%</span>
+           
+            <span class="inline-block" :class="chartData.data&&chartData.data[chartData.date].upDown<0?'text-red-500':'text-green-500'"> 
         </div>
         <div>
             <canvas id="chart" class="w-full"></canvas>
         </div>
+        
     </div>
-</div>
-</x-app-layout>
-        <div>
 
-            <script>
+
+    <!-- component -->
+    <div class="max-w-xs  overflow-hidden shadow-lg my-2">
+        <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+        <div class="px-3 py-4">
+        <div class="font-bold text-xl mb-7">Comunicado</div>
+        <p class="text-grey-darker text-base">
+            Dados dos Alunos e Professores Inscritos, no último mês. 
+            Em nossa Acadêmia.
+        </p>
+        </div>
+        <div class="px-1 py-3">
+        
+        </div>
+    </div>
+    </div>
+<div>
+    
+    <script>
                 Number.prototype.comma_formatter = function() {
                     return this.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 }
@@ -108,14 +124,7 @@
                                 label: 'Últimos 30 Dias',
                                 value: '30days',
                             },
-                            {
-                                label: 'Últimos 6 Meses',
-                        value: '6months',
-                    },
-                    {
-                        label: 'Este Ano',
-                        value: 'year',
-                    },
+                            
                 ],
                 showDropdown: false,
                 selectedOption: 0,
@@ -154,14 +163,14 @@
                             labels: this.data[this.date].data.labels,
                             datasets: [
                                 {
-                                    label: "Valor Arrecadado",
+                                    label: "Alunos Inscritos",
                                     backgroundColor: "rgba(102, 126, 234, 0.25)",
                                     borderColor: "rgba(102, 126, 234, 1)",
                                     pointBackgroundColor: "rgba(102, 126, 234, 1)",
                                     data: this.data[this.date].data.income,
                                 },
                                 {
-                                    label: "Alunos inscritos",
+                                    label: "Professores",
                                     backgroundColor: "rgba(237, 100, 166, 0.25)",
                                     borderColor: "rgba(237, 100, 166, 1)",
                                     pointBackgroundColor: "rgba(237, 100, 166, 1)",
@@ -182,7 +191,7 @@
                                     },
                                     ticks: {
                                         callback: function(value,index,array) {
-                                            return value > 1000 ? ((value < 10000) ? value/1000 + 'K' : value/10000 + 'K') : value;
+                                            return value < 1000 ? ((value < 1000) ? value/1000 + 'K' : value/100000 + 'K') : value;
                                         }
                                     }
                                 }]
@@ -194,6 +203,8 @@
         }
         </script>
         </div>
+        
+        
+        
 
-
-
+    </x-app-layout>
